@@ -1,0 +1,60 @@
+{
+    "$graph": [
+        {
+            "class": "Workflow",
+            "inputs": [
+                {
+                    "type": "string",
+                    "id": "#main/inp1"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "File",
+                    "outputSource": "#main/step1/output1",
+                    "id": "#main/wf_output"
+                }
+            ],
+            "steps": [
+                {
+                    "run": "#tool1.cwl",
+                    "in": [
+                        {
+                            "source": "#main/inp1",
+                            "id": "#main/step1/inp1"
+                        }
+                    ],
+                    "out": [
+                        "#main/step1/output1"
+                    ],
+                    "id": "#main/step1"
+                }
+            ],
+            "id": "#main"
+        },
+        {
+            "class": "CommandLineTool",
+            "inputs": [
+                {
+                    "type": "string",
+                    "id": "#tool1.cwl/inp1"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "File",
+                    "id": "#tool1.cwl/output1",
+                    "outputBinding": {
+                        "glob": "f22a713f1aa24bf09804d78d8397ed6d5a93b689"
+                    }
+                }
+            ],
+            "baseCommand": [
+                "echo"
+            ],
+            "id": "#tool1.cwl",
+            "stdout": "f22a713f1aa24bf09804d78d8397ed6d5a93b689"
+        }
+    ],
+    "cwlVersion": "v1.0"
+}
